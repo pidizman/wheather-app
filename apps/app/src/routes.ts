@@ -6,4 +6,10 @@ interface Route {
   handler: (request: FastifyRequest, reply: FastifyReply) => {};
 }
 
-export const Routes: Route[] = [];
+export const Routes: Route[] = [
+  {
+    method: "get",
+    path: "/",
+    handler: (request, reply) => reply.send({ hello: "world" }),
+  },
+];

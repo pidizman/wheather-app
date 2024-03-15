@@ -5,8 +5,8 @@ config({});
 
 const fastify: FastifyInstance = Fastify();
 
-fastify.get("/", (request, reply) => {
-  reply.send({ hello: "world" });
+Routes.map((v) => {
+  fastify[v.method](v.path, v.handler);
 });
 
 fastify.listen({ port: Number(process.env.PORT) }, (err, address) => {
@@ -14,8 +14,4 @@ fastify.listen({ port: Number(process.env.PORT) }, (err, address) => {
     fastify.log.error(err);
     process.exit(1);
   }
-});
-
-Routes.map((v) => {
-  fastify[v.method](v.path, v.handler);
 });
