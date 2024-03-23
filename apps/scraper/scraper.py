@@ -3,7 +3,7 @@ import json
 from datetime import datetime
 from bs4 import BeautifulSoup
 
-json_filename = "output.json"
+json_filename = "../../packages/scraper-database/output.json"
 data = json.load(open(json_filename))
 
 def scrape(url):
