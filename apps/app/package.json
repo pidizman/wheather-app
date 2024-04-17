@@ -11,7 +11,10 @@
     "typescript": "^5.4.2"
   },
   "dependencies": {
+    "@repo/scraper": "*",
+    "@types/fs-extra": "^11.0.4",
     "dotenv": "^16.4.5",
-    "fastify": "^4.26.2"
+    "fastify": "^4.26.2",
+    "fs-extra": "^11.2.0"
   }
 }

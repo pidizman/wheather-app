@@ -1,6 +1,7 @@
 import Fastify, { FastifyInstance } from "fastify";
 import { config } from "dotenv";
 import { Routes } from "./routes";
+import { scrapeData } from "@repo/scraper";
 config({});
 
 const fastify: FastifyInstance = Fastify();
@@ -15,3 +16,5 @@ fastify.listen({ port: Number(process.env.PORT) }, (err, address) => {
     process.exit(1);
   }
 });
+
+//scrapeData(String(process.env.URL));
