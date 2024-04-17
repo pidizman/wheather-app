@@ -1,0 +1,15 @@
+{
+  "name": "@repo/scraper",
+  "version": "1.0.0",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "axios": "^1.6.8",
+    "cheerio": "^1.0.0-rc.12",
+    "fs-extra": "^11.2.0",
+    "typescript": "latest"
+  }
+}
