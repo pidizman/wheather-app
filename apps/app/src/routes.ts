@@ -1,4 +1,5 @@
 import { FastifyReply, FastifyRequest } from "fastify";
+import { Home } from "./routes/home";
 
 interface Route {
   method: "get" | "post";
@@ -10,6 +11,6 @@ export const Routes: Route[] = [
   {
     method: "get",
     path: "/",
-    handler: (request, reply) => reply.send({ hello: "world" }),
+    handler: Home,
   },
 ];
