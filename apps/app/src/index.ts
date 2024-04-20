@@ -21,7 +21,8 @@ fastify.listen(
   },
 );
 
-scrape(String(process.env.URL));
-setInterval(async () => {
-  scrape(String(process.env.URL));
-}, 3600000);
+// Undo comment when project is done and ready to deploy
+// scrape(String(process.env.URL));
+// setInterval(async () => {
+//   scrape(String(process.env.URL));
+// }, 3600000);
