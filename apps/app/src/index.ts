@@ -1,10 +1,15 @@
 import Fastify, { FastifyInstance } from "fastify";
+import fastifyCors from "@fastify/cors";
 import { config } from "dotenv";
 import { Routes } from "./routes";
 import { scrape } from "@repo/scraper";
 config({});
 
 const fastify: FastifyInstance = Fastify();
+
+fastify.register(fastifyCors, {
+  methods: ["POST", "GET", "DELETE"],
+});
 
 Routes.map((v) => {
   fastify[v.method](v.path, v.handler);
