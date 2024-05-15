@@ -73,3 +73,8 @@ export async function scrapeData(URL: string) {
     console.error("Chyba:", error);
   }
 }
+
+export async function readOutputJson() {
+  const fileData = await readJsonSync("./output.json");
+  return fileData;
+}
