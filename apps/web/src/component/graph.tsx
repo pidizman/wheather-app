@@ -1,6 +1,15 @@
 "use client";
-import { useRef, useEffect, useState } from "react";
-import Chart from "chart.js/auto";
+
+import React, { useEffect, useState } from "react";
+import {
+  Chart,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Tooltip,
+} from "chart.js";
+import { Line } from "react-chartjs-2";
 import { request } from "../../lib/util";
 
 interface Data {
@@ -10,10 +19,10 @@ interface Data {
   time?: string;
 }
 
+Chart.register(CategoryScale, LinearScale, PointElement, LineElement, Tooltip);
+
 export default function Graph() {
-  const [data, setData] = useState<Data[]>();
-  const chartRef = useRef(null);
-  const chartInstance = useRef(null);
+  const [output, setOutput] = useState<Data[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,30 +31,44 @@ export default function Graph() {
         method: "GET",
       });
       const data: Data[] = await response.json();
-      setData(data);
+      setOutput(data);
     };
     fetchData();
-
-    if (chartRef && chartRef.current) {
-      const ctx = chartRef.current.getContext("2d");
-
-      // Destroy previous chart instance, if exists
-      if (chartInstance.current) {
-        chartInstance.current.destroy();
-      }
-
-      chartInstance.current = new Chart(ctx, {
-        type: "line",
-        data: {},
-      });
-    }
-
-    return () => {
-      if (chartInstance.current) {
-        chartInstance.current.destroy();
-      }
-    };
   }, []);
 
-  return <canvas ref={chartRef}></canvas>;
+  const labels: String[] = [];
+  for (let i = 0; i < output.length; i++) {
+    labels.push(`${output[i].date} ${output[i].time}`);
+  }
+
+  const temps: Number[] = [];
+  for (let i = 0; i < output.length; i++) {
+    temps.push(Number(output[i].temperature));
+  }
+
+  console.log(labels, temps);
+
+  // const labels = [
+  //   "January",
+  //   "February",
+  //   "March",
+  //   "April",
+  //   "May",
+  //   "June",
+  //   "July",
+  // ];
+
+  const data = {
+    labels,
+    datasets: [
+      {
+        label: "Dataset 1",
+        data: temps,
+        borderColor: "rgb(255, 99, 132)",
+        backgroundColor: "rgba(255, 99, 132, 0.5)",
+      },
+    ],
+  };
+
+  return <Line data={data} />;
 }

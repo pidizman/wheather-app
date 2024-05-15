@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@repo/scraper": "*",
+    "@fastify/cors": "^9.0.1",
     "@types/fs-extra": "^11.0.4",
     "dotenv": "^16.4.5",
     "fastify": "^4.26.2",
