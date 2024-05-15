@@ -1,1 +1,26 @@
-[]
+[
+  {
+    "temperature": "19.7°C",
+    "dewpoint": "7.9°C",
+    "date": "15/4/2024",
+    "time": "14:25:40"
+  },
+  {
+    "temperature": "19.5°C",
+    "dewpoint": "7.9°C",
+    "date": "15/4/2024",
+    "time": "14:27:54"
+  },
+  {
+    "temperature": "18.5°C",
+    "dewpoint": "7.9°C",
+    "date": "15/4/2024",
+    "time": "14:29:24"
+  },
+  {
+    "temperature": "18.9°C",
+    "dewpoint": "7.9°C",
+    "date": "15/4/2024",
+    "time": "14:33:43"
+  }
+]

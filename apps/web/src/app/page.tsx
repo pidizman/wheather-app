@@ -1,10 +1,10 @@
-export default function Home() {
-  const ctx = document.getElementById("canvas");
+import Graph from "../component/graph";
 
+export default function Home() {
   return (
     <>
       <h1>Hello from Next.JS home page</h1>
-      <canvas id="canvas"></canvas>
+      <Graph />
     </>
   );
 }
