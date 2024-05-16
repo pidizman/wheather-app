@@ -5,8 +5,8 @@ import { readJsonSync, writeJson } from "fs-extra";
 config({});
 
 interface Data {
-  dewpoint?: string;
-  temperature?: string;
+  dewpoint?: number;
+  temperature?: number;
   date?: string;
   time?: string;
 }
@@ -25,7 +25,7 @@ export async function scrape(URL: string) {
 
       if (label === "dewpoint" || label === "temperature") {
         const value = $(element).find(".value").text().trim();
-        data[label] = `${value}°C`;
+        data[label] = Number(value);
       }
     });
 
@@ -59,7 +59,7 @@ export async function scrapeData(URL: string) {
 
       if (label === "dewpoint" || label === "temperature") {
         const value = $(element).find(".value").text().trim();
-        data[label] = `${value}°C`;
+        data[label] = Number(value);
       }
     });
 

@@ -13,8 +13,8 @@ import { Line } from "react-chartjs-2";
 import { request } from "../../lib/util";
 
 interface Data {
-  dewpoint?: string;
-  temperature?: string;
+  dewpoint?: number;
+  temperature?: number;
   date?: string;
   time?: string;
 }
@@ -46,29 +46,36 @@ export default function Graph() {
     temps.push(Number(output[i].temperature));
   }
 
-  console.log(labels, temps);
-
-  // const labels = [
-  //   "January",
-  //   "February",
-  //   "March",
-  //   "April",
-  //   "May",
-  //   "June",
-  //   "July",
-  // ];
+  const options = {
+    elements: {
+      point: {
+        radius: 3,
+        hoverRadius: 5,
+        hitRadius: 10,
+        backgroundColor: "rgba(0, 0, 255, 1)",
+      },
+      line: {
+        borderColor: "rgba(0, 0, 255, 0.1)",
+      },
+    },
+    plugins: {
+      tooltip: {
+        displayColors: false,
+        xAlign: "center",
+        yAlign: "bottom",
+      },
+    },
+  };
 
   const data = {
     labels,
     datasets: [
       {
-        label: "Dataset 1",
+        label: "Temperature",
         data: temps,
-        borderColor: "rgb(255, 99, 132)",
-        backgroundColor: "rgba(255, 99, 132, 0.5)",
       },
     ],
   };
 
-  return <Line data={data} />;
+  return <Line data={data} options={options} />;
 }
