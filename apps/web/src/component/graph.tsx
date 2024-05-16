@@ -46,26 +46,26 @@ export default function Graph() {
     temps.push(Number(output[i].temperature));
   }
 
-  const options = {
-    elements: {
-      point: {
-        radius: 3,
-        hoverRadius: 5,
-        hitRadius: 10,
-        backgroundColor: "rgba(0, 0, 255, 1)",
-      },
-      line: {
-        borderColor: "rgba(0, 0, 255, 0.1)",
-      },
-    },
-    plugins: {
-      tooltip: {
-        displayColors: false,
-        xAlign: "center",
-        yAlign: "bottom",
-      },
-    },
-  };
+  // const options = {
+  //   elements: {
+  //     point: {
+  //       radius: 3,
+  //       hoverRadius: 5,
+  //       hitRadius: 10,
+  //       backgroundColor: "rgba(0, 0, 255, 1)",
+  //     },
+  //     line: {
+  //       borderColor: "rgba(0, 0, 255, 0.1)",
+  //     },
+  //   },
+  //   plugins: {
+  //     tooltip: {
+  //       displayColors: false,
+  //       xAlign: "center",
+  //       yAlign: "bottom",
+  //     },
+  //   },
+  // };
 
   const data = {
     labels,
@@ -77,5 +77,29 @@ export default function Graph() {
     ],
   };
 
-  return <Line data={data} options={options} />;
+  return (
+    <Line
+      data={data}
+      options={{
+        elements: {
+          point: {
+            radius: 3,
+            hoverRadius: 5,
+            hitRadius: 10,
+            backgroundColor: "rgba(0, 0, 255, 1)",
+          },
+          line: {
+            borderColor: "rgba(0, 0, 255, 0.1)",
+          },
+        },
+        plugins: {
+          tooltip: {
+            displayColors: false,
+            xAlign: "center",
+            yAlign: "bottom",
+          },
+        },
+      }}
+    />
+  );
 }
